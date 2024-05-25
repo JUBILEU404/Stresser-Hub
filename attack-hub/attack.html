@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VacStresser</title>
+    <link rel="stylesheet" href="attack.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">VacStresser</h1>
+        <div class="panel">
+            <div class="attack-panel">
+                <h2>Panel</h2>
+                <h3>Attack Panel</h3>
+                <div class="form-group">
+                    <label for="ipv4">IPv4</label>
+                    <input type="text" id="host" value="74.74.74.8">
+                </div>
+                <div class="form-group">
+                    <label for="port">Port</label>
+                    <input type="number" id="port" value="80">
+                </div>
+                <div class="form-group">
+                    <label for="time">Time</label>
+                    <input type="number" id="time" value="30">
+                </div>
+                <div class="form-group">
+                    <label for="protocol">Protocol</label>
+                    <select id="protocol">
+                        <option value="amplification">Amplification</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="method">Method</label>
+                    <select id="method">
+                        <option value="DNS">Method 1</option>
+                        <option value="method2">Method 2</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="concurrents">Concurrents</label>
+                    <input type="range" id="concurrents" min="1" max="15" value="1">
+                    <span id="concurrent-value">1 / 15</span>
+                </div>
+                <button id="attack-button">Attack</button>
+            </div>
+            <div class="attacks-log">
+                <h2>Attacks log</h2>
+                <h3>Running or Expired Attacks</h3>
+                <div class="log-content">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Target</th>
+                                <th>Port</th>
+                                <th>Method</th>
+                                <th>Running</th>
+                            </tr>
+                        </thead>
+                        <tbody id="log-entries">
+                            <tr>
+                                <td colspan="4">No results.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="attack.js"></script>
+</body>
+</html>
