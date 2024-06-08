@@ -1,5 +1,7 @@
 body {
     font-family: Arial, sans-serif;
+    background-color: #1b1b2f;
+    color: #fff;
 }
 
 body.dark-theme {
@@ -22,7 +24,11 @@ body.light-theme .ext{
     color: #fff;
 
 }
-
+.tx{ 
+    text-align: center;
+    color: #fff;
+   
+}
 
 .Formas{
     font-family: Arial, sans-serif;
@@ -92,11 +98,12 @@ body.light-theme .ext{
 
 .theme-switcher {
     position: relative;
+    border-bottom: #a6a6a6;
 }
 
 #theme-toggle {
-    background-color: #00f2fe;
-    color: #1b1b2f;
+    
+   
     border: none;
 }
 
@@ -105,7 +112,8 @@ body.light-theme .ext{
     top: 100%;
     left: 0;
     display: none;
-    background-color: #00f2fe;
+    background-color: transparent;
+   
 }
 
 .dropdown-menu button {
@@ -114,12 +122,12 @@ body.light-theme .ext{
     width: 100%;
     text-align: left;
     padding: 10px 20px;
-    color: #1b1b2f;
+   
 }
 
 .dropdown-menu button:hover {
-    background-color: #1b1b2f;
-    color: #00f2fe;
+    background-color:transparent;
+    ;
 }
 
 #theme-toggle:hover + .dropdown-menu,
