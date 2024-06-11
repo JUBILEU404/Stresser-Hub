@@ -18,3 +18,6 @@ function setTheme(theme) {
     // Update the button text to reflect the current theme
     document.getElementById('theme-toggle').textContent = theme.charAt(0).toUpperCase() + theme.slice(1);
 }
+window.onload = function() {
+    setTheme('light');
+};
