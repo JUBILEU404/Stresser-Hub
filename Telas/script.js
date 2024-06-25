@@ -1,5 +1,4 @@
-
-
+ // faz a mudacasao do tema clado para escuro a traves de um clice 
 function toggleTheme() {
     var body = document.body;
     var themeButton = document.getElementById('theme-toggle');

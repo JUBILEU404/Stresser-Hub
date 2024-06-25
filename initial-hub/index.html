@@ -6,24 +6,26 @@
     <title>HubStresser</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="styles.css" rel="stylesheet">
+    
 </head>
-<body>
+<body class="light-theme" >   
+      <!--  div de control de espaco  -->
     <div class="container-fluid">
-        <header class="d-flex justify-content-between align-items-center py-3">
+        <div class="d-flex justify-content-between align-items-center py-2">
             <h1 class="logo">HubStresser</h1>
-            <div class="theme-switcher">
-                <button id="theme-toggle" class="btn btn-outline-light">Light</button>
-                <div class="dropdown-menu">
-                    <button class="dropdown-item" onclick="setTheme('light')">Light</button>
-                    <button class="dropdown-item" onclick="setTheme('dark')">Dark</button>
-                    <button class="dropdown-item" onclick="setTheme('system')">System</button>
-                </div>
-            </div>
-        </header>
+
+            <!--  confingura  -->
+        <div class="d-flex flex-row-reverse">
+            <div class="p-2"><a href="../Telas/Tela-Login.html"><button type="button" class="border border-secondary btn btn-outline-dark ext rounded-pill tx"  >LOGIN</button></a></div>  <!--  muda para login  -->
+            <div class="p-2"><div class="theme-switcher ext rounded-circle fs-5">
+                <button id="theme-toggle" class="border border btn btn-outline rounded-circle tx" onclick="toggleTheme()"><i  class="bi bi-sun fs-5 ext" >  </i></button>  <!--  muda dark  para light-->
+              </div></div>
+          </div>
+        </div>
         <section class="hero text-center">
             <h2>Simulate DDoS Attacks With Ease</h2>
             <p>Experience reliable and uninterrupted power with us! Purchasing a plan is hassle-free, quick, and highly effective, whether it's for your business, stresser, bot, or personal needs. Say goodbye to downtime and welcome stability.</p>
-            <button class="btn btn-primary">Get Started</button>
+            <a href="../initial-hub/index.html"><button type="button" class="border border-secondary btn btn-outline-dark ext rounded-pill tx"  >Stresser-Hub </button></a>
         </section>
         <section class="features text-center">
             <h2>Quick solutions, less stress</h2>
@@ -43,7 +45,10 @@
             </div>
         </section>
     </div>
+    
 
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet"> 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
