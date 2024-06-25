@@ -12,27 +12,19 @@
 
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   </head>
-  <body  >
+  <body class="light-theme" >
     <!--  -->
-    
-
-    
-    
+  
              <!-- guia de barra de Home   -->
         <div class="mx-auto p-2  ">
        <div class="btn-group mx-auto p-2 "  role="group" aria-label="Basic outlined example">
 
-       <a href="../initial-hub/index.html"><button type="button" class="border border-secondary btn btn-outline-dark ext rounded-5 tx"  >Home </button></a>
+       <a href="../initial-hub/index.html"><button type="button" class="border border-secondary btn btn-outline-dark ext rounded-5 tx"  >Home-StreesHub </button></a>
            
 
        <!-- guia de barra de muda dark light  -->
         <div class="theme-switcher ext  rounded-5">
-          <button id="theme-toggle" class="border border-secondary btn btn-outline-dark ext rounded-5 tx">Light</button>
-          <div class="dropdown-menu ext rounded-4">
-              <button class="dropdown-item btn btn-outline ext rounded-4 tx" onclick="setTheme('light')">Light</button>
-              <button class="dropdown-item btn btn-outline ext rounded-4 tx" onclick="setTheme('dark')">Dark</button>
-              
-          </div>
+          <button id="theme-toggle" class="border border-secondary btn btn-outline-dark ext rounded-5 tx" onclick="toggleTheme()"><i  class="bi bi-sun fs-5" ></i></button>
         
          </div>
       </div>
@@ -61,7 +53,9 @@
       <div id="IDCadastro" class="">If you do not have a registration click here.<a href="../Telas/Tela-Regristo.html"><button type="button" class="border border-secondary btn btn-outline-dark ext rounded-5 tx">Registration</button></a>
         </div>
       </form>
-   
+
+
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet"> 
       <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

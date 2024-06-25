@@ -11,8 +11,12 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^1.7.2",
+<<<<<<< HEAD
+    "bootstrap-icons": "^1.11.3"
+=======
     "cors": "^2.8.5",
     "express": "^4.19.2",
     "http-proxy-middleware": "^3.0.0"
+>>>>>>> 6f00000652554d9dcbfe4ae2552a2c2bbb49c3d1
   }
 }

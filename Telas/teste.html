@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Toggle Theme</title>
+<link  href="styles.css" rel="stylesheet"> 
+</head>
+<body class="light-theme">
+<svg class="bi" width="32" height="32" fill="currentColor">
+  <use xlink:href="bootstrap-icons.svg#toggles"/>
+</svg>
+<button id="theme-toggle" class="border border-secondary btn btn-outline-dark ext rounded-5 tx" onclick="toggleTheme()"><i  class="bi bi-toggles fs-5" ></i></button>
+
+<script>
+function toggleTheme() {
+    var body = document.body;
+    var themeButton = document.getElementById('theme-toggle');
+
+    if (body.classList.contains('light-theme')) {
+        // Mudando de light para dark
+        body.classList.remove('light-theme');
+        body.classList.add('dark-theme');
+        
+    } else {
+        // Mudando de dark para light
+        body.classList.remove('dark-theme');
+        body.classList.add('light-theme');
+        
+    }
+}
+</script>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet"> 
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="script.js"></script>
+
+
+</body>
+</html>
