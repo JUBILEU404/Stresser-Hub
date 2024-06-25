@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abas de Produtos e Vendas</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        padding: 20px;
+    }
+    .tabs {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+    .tab {
+        background-color: #007bff;
+        color: white;
+        padding: 10px 20px;
+        cursor: pointer;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        margin-right: 5px;
+    }
+    .tab.active {
+        background-color: #0056b3;
+    }
+    .tab-content {
+        display: none;
+        padding: 20px;
+        background-color: white;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    .tab-content.active {
+        display: block;
+    }
+    .cart-item {
+        margin-bottom: 10px;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 10px;
+    }
+</style>
+</head>
+<body>
+
+<div class="tabs">
+    <div class="tab active" onclick="openTab(event, 'produtos')">Produtos</div>
+    <div class="tab" onclick="openTab(event, 'carrinho')">Carrinho</div>
+</div>
+
+<div id="produtos" class="tab-content active">
+    <h2>Produtos</h2>
+    <p>Aqui está o conteúdo da aba de produtos.</p>
+</div>
+
+<div id="carrinho" class="tab-content">
+    <h2>Carrinho</h2>
+    <div id="cart-items">
+        <!-- Aqui serão adicionados os itens do carrinho dinamicamente -->
+    </div>
+</div>
+
+<script>
+function openTab(evt, tabName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tab-content");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tab");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].classList.remove("active");
+    }
+    document.getElementById(tabName).style.display = "block";
+    evt.currentTarget.classList.add("active");
+
+    if (tabName === 'carrinho') {
+        // Simulação de itens no carrinho
+        showCartItems();
+    }
+}
+
+function showCartItems() {
+    var cartItems = [
+        { name: "Produto 1", price: 50 },
+        { name: "Produto 2", price: 30 },
+        { name: "Produto 3", price: 20 }
+    ];
+
+    var cartItemsDiv = document.getElementById("cart-items");
+    cartItemsDiv.innerHTML = ""; // Limpa o conteúdo anterior
+
+    cartItems.forEach(function(item) {
+        var itemDiv = document.createElement("div");
+        itemDiv.classList.add("cart-item");
+        itemDiv.innerHTML = `<strong>${item.name}</strong> - R$ ${item.price.toFixed(2)}`;
+        cartItemsDiv.appendChild(itemDiv);
+    });
+}
+</script>
+
+</body>
+</html>
