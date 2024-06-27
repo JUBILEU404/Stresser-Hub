@@ -38,43 +38,39 @@
                              
                                <!-- guia  de login en evino de infomacoes pelos form  -->
                          
-        <form class=" ext border border-secondary border-5    position-absolute top-50 start-50 translate-middle shadow-lg rounded p-5 mb-5   rounded-5 "  style="width: 350px;"  onsubmit="return confirmarSenha()">
+        <form id="registerForm" class=" ext border border-secondary border-5    position-absolute top-50 start-50 translate-middle shadow-lg rounded p-5 mb-5   rounded-5 "  style="width: 350px;"  onsubmit="return confirmarSenha()">
         <div class="mb-3 ">
           <label for="exampleInputIDUsuario" >Usuario</label>
-          <input type="text" class="ext form-control bg-transparent " id="InputIDUsuario" aria-describedby="IDUsuarioHelp">
+          <input type="text" class="ext form-control bg-transparent rounded-pill " id="RIDUsuario" aria-describedby="IDUsuario">
         </div>
         <div class="mb-3 ">
             <label for="exampleInputIDEmail" >Email</label>
-            <input type="email" class="ext form-control bg-transparent rounded" id="InputIDEmail" aria-describedby="IDEmailHelp">
+            <input type="email" class="ext form-control bg-transparent rounded-pill" id="RIDEmail" aria-describedby="IDEmail">
           </div>
         <div class="mb-3 " >
           <label for="exampleInputPassword1" class="  ">Password</label>
-          <input type="password" class="ext form-control bg-transparent rounded" id="IDPassword" name="Password">
+          <input type="password" class="ext form-control bg-transparent rounded-pill" id="RIDPassword" name="password">
         </div>
-        <div class="mb-3 " >
-            <label for="InputPassword1" class="  ">Confirm the Password.</label>
-            <input type="password" class="ext form-control bg-transparent rounded" id="2IDPassword" name="Password2">
-          </div>
         <div class="mb-3 form-check">
           <input type="checkbox" class="form-check-input" id="exampleCheck1">
           <label class="form-check-label " for="exampleCheck1">Check me out</label>
         </div>
         <div class="TAC">
-        <button type="submit" class="border border-secondary btn btn-outline-dark ext rounded-pill  ">Resgitra</button>
+          <a href="Tela-Login.html"><button type="submit" class="border border-secondary btn btn-outline-dark ext rounded-pill  ">Resgitra</button></a>
     </div>
         <div id="IDLogin" class="TAC"><p></p>If you already have a login. </div><br>  <div class="TAC">
-            <a href="./Tela-Login.html"> <button type="submit" class="border border-secondary btn btn-outline-dark ext rounded-pill  ">LOGIN</button>
+            <a href="Tela-Login.html"> <button type="submit" class="border border-secondary btn btn-outline-dark ext rounded-pill  ">LOGIN</button>
           </a></div>
-        
+          <p id="registerMessage"></p>
       </form>
-
+                
       <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet"> 
       <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
       <script src="script.js"></script>
-      <script src="Com-Senha.js"></script>
-      
+     
+      <script src="test.js"></script>
   
 </body>
 
