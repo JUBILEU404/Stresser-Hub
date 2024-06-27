@@ -57,3 +57,27 @@ function updateLog(host, port, method, time, status) {
     logEntries.appendChild(logRow);
     return logRow;
 }
+
+// Função para atualizar as opções do campo "Method" com base no protocolo selecionado
+document.getElementById('protocol').addEventListener('change', function() {
+    const protocol = this.value;
+    const methodSelect = document.getElementById('method');
+    methodSelect.innerHTML = '';
+
+    let options = [];
+    if (protocol === 'amplification') {
+        options = ['DNS', 'TCPMB'];
+    } else if (protocol === 'Layer7') {
+        options = ['HTTPBYPASS', 'TLS', 'SITEBROWSER', 'SITEBEACH', 'HTTP1', 'HTTP2'];
+    }
+
+    options.forEach(option => {
+        const opt = document.createElement('option');
+        opt.value = option;
+        opt.textContent = option;
+        methodSelect.appendChild(opt);
+    });
+});
+
+// Inicializar opções de Method com o valor padrão do protocolo selecionado
+document.getElementById('protocol').dispatchEvent(new Event('change'));

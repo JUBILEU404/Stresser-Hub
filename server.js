@@ -20,7 +20,14 @@ const vacApiURL = 'https://api.vacstresser.ru/api';
 const methodMapping = {
     'DNS': { vacMethod: ["DNS"] },
     'TLS': { vacMethod: ["TLS"] },
-    // Adicione outros métodos conforme necessário
+    'HTTPBYPASS': { vacMethod: ["HTTPBYPASS"] },
+    'TCPMB': { vacMethod: ["TCPMB"] },
+    'SITETLS': { vacMethod: ["TLS"] },
+    'SITEBROWSER': { vacMethod: ["BROWSER"] },
+    'SITEBEACH': { vacMethod: ["HTTPBEACH"] },
+    'HTTP1': { vacMethod: ["HTTP1"] },
+    'HTTP2': { vacMethod: ["HTTP2"] },
+    
 };
 
 // Rota para receber solicitações de ataque
