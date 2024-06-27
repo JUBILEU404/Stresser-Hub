@@ -3,25 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>teste</title>
-    <style>
-        .button-link {
-            display: inline-block;
-            padding: 10px 20px;
-            font-size: 16px;
-            color: #fff;
-            background-color: #007bff;
-            border: none;
-            border-radius: 5px;
-            text-align: center;
-            text-decoration: none;
-        }
-        .button-link:hover {
-            background-color: #0056b3;
-        }
-    </style>
+    <title>HubStresser</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+    
 </head>
-<body>
-    <a class="button-link" href="./attack/index.html">teste</a>
+<body class="light-theme" >   
+      <!--  div de control de espaco  -->
+    <div class="container-fluid">
+        <div class="d-flex justify-content-between align-items-center py-2">
+            <h1 class="logo">HubStresser</h1>
+
+            <!--  confingura  -->
+        <div class="d-flex flex-row-reverse">
+            <div class="p-2"><a href="./tela-log/Tela-Login.html"><button type="button" class="border border-secondary btn btn-outline-dark ext rounded-pill tx"  >LOGIN</button></a></div>  <!--  muda para login  -->
+            <div class="p-2"><div class="theme-switcher ext rounded-circle fs-5">
+                <button id="theme-toggle" class="border border btn btn-outline rounded-circle tx" onclick="toggleTheme()"><i  class="bi bi-sun fs-5 ext" >  </i></button>  <!--  muda dark  para light-->
+              </div></div>
+          </div>
+        </div>
+        <section class="hero text-center">
+            <h2>Simulate DDoS Attacks With Ease</h2>
+            <p>Experience reliable and uninterrupted power with us! Purchasing a plan is hassle-free, quick, and highly effective, whether it's for your business, stresser, bot, or personal needs. Say goodbye to downtime and welcome stability.</p>
+            <a href="../initial-hub/index.html"><button type="button" class="border border-secondary btn btn-outline-dark ext rounded-pill tx"  >Stresser-Hub </button></a>
+        </section>
+        <section class="features text-center">
+            <h2>Quick solutions, less stress</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <h3>Security First</h3>
+                    <p>We prioritize the safety of our customers above all else and maintain the integrity and confidentiality of everyone who buys with us.</p>
+                </div>
+                <div class="col-md-4">
+                    <h3>Advanced Methods</h3>
+                    <p>Our solution, which is self-coded and utilizes high-quality proxies, currently offers the best bypasses and power stability in the market. Please note that it may not work on all targets.</p>
+                </div>
+                <div class="col-md-4">
+                    <h3>Dedicated Network</h3>
+                    <p>Our approach involves solely using powerful, high-bandwidth servers to guarantee stability during every test, regardless of the network load.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet"> 
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
