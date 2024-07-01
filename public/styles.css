@@ -12,17 +12,15 @@ body.light-theme {
     color: #000;
 }
 
-body.light-theme .ext{
+body.light-theme .ext {
     background-color: #1b1b2f;
     color: #fff;
-
 }
 
 body.dark-theme .ext {
     background-color: #fff;
     color: #000;
 }
-
 
 .logo {
     font-family: 'Courier New', Courier, monospace;
@@ -101,7 +99,7 @@ body.dark-theme .ext {
 
 .dropdown-menu button:hover {
     background-color: #1b1b2f;
-    
+    color: #fff;
 }
 
 #theme-toggle:hover + .dropdown-menu,
