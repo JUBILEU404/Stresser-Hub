@@ -8,10 +8,11 @@
   },
   "dependencies": {
     "axios": "^0.21.1",
+    "better-sqlite3": "^11.1.2",
     "cors": "^2.8.5",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "sqlite3": "^5.1.7"
   },
   "author": "Sven Gabriel Valentim da Conceição",
   "license": "ISC"
 }
-

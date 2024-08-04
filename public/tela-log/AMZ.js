@@ -1,47 +1,38 @@
+// AMZ.js
+
 // Função para lidar com o envio do formulário de registro
-document.getElementById('registerForm').addEventListener('submit', function(event) {
+document.getElementById('registerForm').addEventListener('submit', async function(event) {
   event.preventDefault(); // Evita o envio padrão do formulário
 
   // Captura os dados do formulário
-  let usuario = document.getElementById('IDUsuario').value;
-  let email = document.getElementById('IDEmail').value;
-  let password = document.getElementById('IDPassword').value;
-  
+  let usuario = document.getElementById('RIDUsuario').value;
+  let email = document.getElementById('RIDEmail').value;
+  let password = document.getElementById('RIDPassword').value;
 
-  
   // Cria um objeto com os dados do registro
   let registro = {
-      usuario: usuario,
+      username: usuario,
       email: email,
       password: password
   };
 
-  // Salva o registro no armazenamento local
-  salvarRegistro(registro);
-
-  // Limpa os campos do formulário
-  document.getElementById('IDUsuario').value = '';
-  document.getElementById('IDEmail').value = '';
-  document.getElementById('IDPassword').value = '';
- 
-
-  // Exibe o registro no console após salvar
-  console.log(registro);
-
-  // Opcional: Pode-se adicionar uma mensagem de sucesso ou redirecionar o usuário para outra página aqui
+  // Envia os dados para o servidor
+  try {
+    const response = await fetch('/api/register', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(registro)
+    });
+    const result = await response.json();
+    alert(result.message);
+    // Limpa os campos do formulário
+    document.getElementById('RIDUsuario').value = '';
+    document.getElementById('RIDEmail').value = '';
+    document.getElementById('RIDPassword').value = '';
+  } catch (error) {
+    console.error('Ocorreu um erro:', error);
+    alert('Ocorreu um erro ao registrar o usuário');
+  }
 });
-
-// Função para salvar registro no LocalStorage
-function salvarRegistro(registro) {
-  // Verifica se já há registros salvos
-  let registros = JSON.parse(localStorage.getItem('registros')) || [];
-
-  // Adiciona o novo registro
-  registros.push(registro);
-
-  // Salva no LocalStorage
-  localStorage.setItem('registros', JSON.stringify(registros));
-}
-
-// Chama a função para exibir os registros ao carregar a página (opcional, se houver uma lista de registros para exibir)
-// mostrarRegistros();

